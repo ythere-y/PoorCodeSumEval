@@ -264,7 +264,6 @@ if __name__ == "__main__":
 
     t0 = time.time()
     # single_BLEUScore(
-    #     fake=False,
     #     model_name="CodeLlama-7b-hf",
     #     partition_name="origin",
     #     type_name="origin",
@@ -276,18 +275,18 @@ if __name__ == "__main__":
     #     score_name="BLEUScore",
     # )
 
-    one_more_score()
+    # one_more_score()
 
-    # reset_summary("CodeLlama-7b-hf")
-    # model_name = "CodeLlama-7b-hf"
-    # lang_name = "go"
-    # task_name = "work"
-    # start_point = 0
-    # limit = 2000
-    # for lang_name in ["python", "go", "java"]:
-    #     print(f"start scoring model : {model_name}, lang : {lang_name}")
-    #     AllBLEUScore(model_name, lang_name, task_name, start_point, limit)
-    #     AllBERTScore(model_name, lang_name, task_name, start_point, limit)
+    reset_summary("CodeLlama-7b-hf")
+    model_name = "CodeLlama-7b-hf"
+    lang_name = "go"
+    task_name = "work"
+    start_point = 0
+    limit = 2000
+    for lang_name in ["python", "go", "java"]:
+        print(f"start scoring model : {model_name}, lang : {lang_name}")
+        AllBLEUScore(model_name, lang_name, task_name, start_point, limit)
+        AllBERTScore(model_name, lang_name, task_name, start_point, limit)
     t1 = time.time()
 
     print("**************************************")

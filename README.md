@@ -107,8 +107,66 @@ The result includes the inference results of CodeLlama-7b on the Go dataset with
 The result will be saved into path `ref_and_gen/codellama-7b/single/semantic/FNE/go/work_gen_[0-2000].json` and `ref_and_gen/codellama-7b/single/semantic/FNE/go/work_ref_[0-2000].json`
 
 ## Calculating the score
-TODO: add p-value calculation
-In `scores`, BLEU and BERT scores are calculated.
+
+In `scores`, `BLEUScore`, `BERTScore` and `P-value` scores are calculated.
+
+### `BLEUScore` and `BERTScore`
+
+#### Edit Code: `scores/bleu_BERTScore.py`
+
+```python
+if __name__ == "__main__":
+    reset_summary("CodeLlama-7b-hf")
+    model_name = "CodeLlama-7b-hf"
+    task_name = "work"
+    start_point = 0
+    limit = 2000
+    for lang_name in ["python", "go", "java"]:
+        print(f"start scoring model : {model_name}, lang : {lang_name}")
+        AllBLEUScore(model_name, lang_name, task_name, start_point, limit)
+        AllBERTScore(model_name, lang_name, task_name, start_point, limit)
+    t1 = time.time()
+```
+
+#### Run Code
+
+```
+python scores/bleu_BERTScore.py
+```
+
+Description: This script will read the inference results from the default path of the model and calculate the BLEU and BERT scores.
+
+#### Result
+
+The result details will be saved into `scores/CodeLlama-7b-hf`, and the summary of the scores will be saved into `scores/CodeLlama-7b-hf/summary.json`.
+
+### `P-value`
+
+#### Edit Code: `scores/significant.py`
+
+```python
+def analysis_and_log():
+
+    model_name = "CodeLlama-7b-hf"
+    task_name = "work"
+    score_name = "BERTScore"
+    start_point = 0
+    limit = 2000
+    for lang_name in ["python", "go", "java"]:
+        ALLSignificant(model_name, lang_name, task_name, start_point, score_name, limit)
+```
+
+#### Run Code
+
+```bash
+python scores/significant.py
+```
+
+Description: This script will read the BERTScore results from the default path of the model and calculate the P-value.
+
+#### Result
+
+The result details will be printout directly.
 
 ## Appendix
 
