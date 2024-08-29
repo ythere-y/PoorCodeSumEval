@@ -236,7 +236,7 @@ class Utils:
 
 class PythonRobustCodeSum:
     def __init__(self) -> None:
-        DATASET_PATH = "/data2/huchao/11.novels/download/code_x_glue_ct_code_to_text"
+        DATASET_PATH = "path_to_code_x/code_x_glue_ct_code_to_text"
 
         self.dataset = load_dataset(DATASET_PATH, "python")["test"]
         print(f"load data from codex blue, size: {self.dataset.shape}")
