@@ -1,3 +1,5 @@
+Linke: https://ieeexplore.ieee.org/document/10764959
+
 # PoorCodeSumEval
 
 This repository for our ASE 2024 paper "How Effective Do Code Language Models Understand Poor-Readability Code?" includes benchmark suite, results, methods for acquiring and preparing materials, and source code of our automatic scoring tool. We hope this artifact can motivate and help future research on code summarization.
